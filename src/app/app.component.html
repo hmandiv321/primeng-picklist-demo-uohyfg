@@ -1,0 +1,24 @@
+<p-pickList [source]="sourceProducts" [target]="targetProducts" sourceHeader="Available" targetHeader="Selected"
+	dragdrop="true" [responsive]="true" [sourceStyle]="{'height':'300px'}" [targetStyle]="{'height':'300px'}"
+	filterBy="name" sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name"
+	[showSourceControls]="false" [showTargetControls]="false">
+	<ng-template let-product pTemplate="item" let-index="index">
+		<div class="product-item">
+			<div class="product-list-detail">
+				<!-- <h5 class="p-mb-2">{{product.name}} {{index}}</h5> -->
+				<h5 class="p-mb-2">{{product.name}}</h5>
+				<i class="pi pi-tag product-category-icon"></i>
+				<span class="product-category">{{product.category}}</span>
+			</div>
+			<div class="product-list-action">
+				<h6 class="p-mb-2">${{product.price}}</h6>
+				<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+			</div>
+		</div>
+	</ng-template>
+</p-pickList>
+<br/>
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<p-button (click)="confirm1()" icon="pi pi-check" label="Confirm"></p-button>
+<p-messages [value]="msgs"></p-messages>
